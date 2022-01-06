@@ -1,20 +1,27 @@
 import React, { useState } from "react"; 
+import {useNavigate} from "react-router-dom"
 import './Paging.css'; 
 import Pagination from "react-js-pagination";
 
 
 const Paging = () => {
-   const [page, setPage] = useState(1); 
-   const handlePageChange = (page) => { setPage(page); }; 
-   return (
-   <Pagination 
+  let navigate = useNavigate(); 
+  const [page, setPage] = useState(1);
+  const handlePageChange = (page) => { 
+    setPage(page); 
+    console.log(page)
+    navigate(`/board/list/${page}`);
+  }; 
+  return (
+    <Pagination 
     activePage={page}
     itemsCountPerPage={10}
-    totalItemsCount={450}
+    totalItemsCount={21}
     pageRangeDisplayed={5}
     prevPageText={"‹"}
     nextPageText={"›"}
     onChange={handlePageChange} 
-  />); 
+    />
+  ); 
 }; 
   export default Paging;

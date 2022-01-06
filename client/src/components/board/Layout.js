@@ -1,3 +1,5 @@
+import { Box } from '@mui/system';
+import Button from '@mui/material/Button';
 import {Outlet, Link} from 'react-router-dom';
 
 const Layout = () => {
@@ -5,12 +7,12 @@ const Layout = () => {
         <>
             <nav>
                 <ul className='tabs'>
-                    <li>
-                        <Link to="/board/list">글목록</Link>
-                    </li>
-                    <li>
-                        <Link to="/board/write">글쓰기</Link>
-                    </li>
+                        <Box sx={{ display: 'flex', justifyContent: 'right' }}>
+                          <Button component={Link} to="/board/list" variant="contained">글 목록</Button>
+                        </Box>
+                        <Box sx={{ display: 'flex', justifyContent: 'right' }}>
+                          <Button component={Link} to="/board/write" variant="contained">글 쓰기</Button>
+                        </Box>
                 </ul>
             </nav>
             <br />

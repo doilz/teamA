@@ -2,8 +2,8 @@ const mysql = require("mysql");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { promisify } = require('util');
-const fs = require("fs")
 
+const fs = require("fs")
 const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
 
@@ -19,19 +19,18 @@ const db = mysql.createConnection({
 exports.login = (req, res) => {
     try {
         const { email, userpwd } = req.body;
-        
 
         if(!email || !userpwd) {
-            return res.status(400).render('login', {
+            return res.send({
                 message: 'Please provide email and password'
-            });
-           
+            });   
         }
+
         db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
 
             if( !results || !(await bcrypt.compare(userpwd, results[0].userpwd) ) ) {
                 console.log(results);
-                res.status(401).render('login', {
+                res.send({
                     message: 'email or password is incorrect.'
                     
                 });
@@ -57,12 +56,7 @@ exports.login = (req, res) => {
     } catch (error) {
         console.log(error);
     }
-
-
-
 }
-
-
 
 exports.signup = (req, res) => {
         console.log(req.body);

@@ -160,7 +160,7 @@ export default function NavigationBar() {
               <Tab label="Product"component={Link} to={"/product"} />
               <Tab label="Board" component={Link} to={"board/page/1"} />
               {isLoggedIn ? <MypageNavItem /> : <Tab label="Signup"  component={Link} to={"/signup"} index={0} value={value} onClick={(event) => handleClick(event, 0)}/> }
-              <Tab label="Logout" component={Link} to={"/logout"} index={1} value={value} onClick={(event) => handleClick(event, 1)}/>
+              {/* <Tab label="Logout" component={Link} to={"/logout"} index={1} value={value} onClick={(event) => handleClick(event, 1)}/> */}
               <Tab label="/Mypage"component={Link} to={"/mypage"} />
             </Tabs>
 

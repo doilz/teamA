@@ -49,7 +49,7 @@ const Router = () => {
         <Route path="/product" element={<Product />} />
           <Route exact path="list" element={<Product />} />
           <Route exact path="product/productdetail/:id" element={<ProductDetail />} />
-          <Route exact path="product/buyproduct/:id" element={<BuyProduct/>} />
+          {/* <Route exact path="product/buyproduct/:id" element={<BuyProduct/>} /> */}
 
           <Route path="/mypage" element={<Mypage />} /> 
           <Route path="mypage/buylist" element={<Buylist />} />
